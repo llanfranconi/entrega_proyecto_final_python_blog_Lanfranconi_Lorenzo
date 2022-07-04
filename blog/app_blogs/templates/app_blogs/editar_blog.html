@@ -1,0 +1,36 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <h1>Edita el texto de tu blog:</h1>
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <h2>{{mensaje}}</h2>
+        <form action="" method="POST" >
+            {% csrf_token %} 
+
+            <table>
+                {{mi_formulario.as_table}}
+            </table>
+            
+            <input type="submit", value="Editar">
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

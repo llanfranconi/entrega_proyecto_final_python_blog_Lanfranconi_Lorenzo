@@ -1,0 +1,94 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <h1>Detalles del blog </h1>
+
+            </div>
+        </div>
+    </div>
+</header>
+<p></p>
+<p></p>
+<p></p>
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <h2>{{mensaje}}</h2>
+               <h2><strong>Titulo:</strong> {{blog.titulo}}</h2> 
+               <p><strong>Subtitulo:</strong> {{blog.subtitulo}}</p>
+               {% for usuario in usuarios %}
+                    {% if usuario.id == blog.user_id %} 
+                    <p><strong>Autor:</strong> <img height="40px" src="{{avatar_usuario}}"> {{usuario.username}}</p>
+                    {% endif %} 
+                {% endfor %}
+                <p><strong>Fecha:</strong> {{blog.fecha}}</p>
+                <p></p>
+                <p></p>
+                <p>----------------------------</p>
+                <h3>Contenido:</h3>
+                <img max-width="200" src="{{blog.imagen.url}}">
+                <p>{{blog.cuerpo}}</p>
+               <p></p>
+               <p></p>
+               <p>----------------------------</p>
+               <p></p>
+               <p></p>
+               {% if request.user.is_authenticated %}
+               <h3>Deja tu comentario</h3>
+               <p>{{mensaje}}</p>
+               <div class="text-center text-black"></div>
+               <form action="" method="POST" >
+                   {% csrf_token %} 
+       
+                   <table>
+                       {{formulario_comentario.as_table}}
+                   </table>
+                   
+                   <input type="submit", value="Crear">
+               </form>
+               </div>
+               <p></p>
+               <p></p>
+               <p>----------------------------</p>
+               <p></p>
+               <p></p>
+
+               {% endif %}
+
+             
+
+               <h3>Lista de comentarios:</h3>
+
+               <p>----------------------------</p>
+               <p></p>
+               <p></p>
+               {% for comentario in comentarios %} 
+                    {% for usuario in usuarios %}
+                            {% if usuario.id == comentario.user_id %} 
+                                <p><strong>Autor:</strong> {{usuario.username}}</p>
+                            {% endif %} 
+                    {% endfor %}
+               <p><strong> Fecha:</strong> {{comentario.fecha}} </p>
+               <h5>Comentario: </h5>
+                <p>{{comentario.cuerpo}}</p>
+                <p></p>
+                <p></p>
+                <p>----------------------------</p>
+                <p></p>
+                <p></p>
+               {% endfor %}
+
+             
+        </div>
+    </div>
+</div>
+
+{% endblock %}

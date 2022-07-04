@@ -1,0 +1,36 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Ingrese sus datos</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<p>{{mensaje}}</p>
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+
+        <form action="" method="POST">
+            {% csrf_token %} 
+
+            <table>
+                {{form.as_table}}
+            </table>
+            
+            <input type="submit", value="Ingresar">
+        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

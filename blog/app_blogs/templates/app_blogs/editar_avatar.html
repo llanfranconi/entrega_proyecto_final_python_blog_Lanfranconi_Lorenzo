@@ -1,0 +1,36 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <p>Avatar Actual:</p>
+                <img height="200px" src="{{avatar_usuario}}">
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <p>Cargar Avatar</p>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+
+            <table>
+                {{mi_formulario.as_p}}
+            </table>
+            <input type="submit", value="Subir Avatar">
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

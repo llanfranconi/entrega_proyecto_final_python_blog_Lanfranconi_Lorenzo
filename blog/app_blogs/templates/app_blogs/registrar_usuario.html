@@ -1,0 +1,37 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Registra tu usuario</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        {{mensaje}}
+
+        <form action="registrar_usuario" method="POST">
+            {% csrf_token %} 
+
+            <table>
+                {{formulario_registro_usuario.as_table}}
+            </table>
+            <p>La contraseña debe de ser distinta al resto de los campos ingresados, tener al menos 8 caracteres, no puede ser una contraseña común y no puede ser enteramente numerica</p>
+            <input type="submit", value="Registrar">
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

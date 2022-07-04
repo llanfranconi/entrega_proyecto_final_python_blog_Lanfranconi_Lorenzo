@@ -1,0 +1,27 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                {% if request.user.is_authenticated %}
+                <img height="40px" src="{{avatar_usuario}}">
+                <p></p>
+                <h1>Hola {{user.get_username}}!</h1>
+                {% endif %} 
+                {% if not request.user.is_authenticated %}
+                <h1>Bienvenidos al sitio!</h1>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% endblock %}

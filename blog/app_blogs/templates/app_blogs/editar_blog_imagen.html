@@ -1,0 +1,38 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <h1>Edita la imagen de tu blog:</h1>
+
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <h2>{{mensaje}}</h2>
+        <h5>Imagen Actual</h5>
+        <img max-width="200" src="{{imagen_actual}}">
+        <form action="" method="POST"  enctype="multipart/form-data">
+            {% csrf_token %} 
+
+            <table>
+                {{mi_formulario.as_table}}
+            </table>
+            
+            <input type="submit", value="Editar">
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

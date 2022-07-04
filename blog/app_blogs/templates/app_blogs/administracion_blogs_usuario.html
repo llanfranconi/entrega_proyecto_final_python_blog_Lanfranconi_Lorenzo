@@ -1,0 +1,39 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <h1>Hola {{user.get_username}}, esta es la lista de blogs que has creado</h1>
+
+            </div>
+        </div>
+    </div>
+</header>
+<p></p>
+<p></p>
+<p></p>
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <h2>{{mensaje}}</h2>
+        {% for post in blogs_usuario %} 
+               <h2>Titulo: {{post.titulo}}</h2> 
+               <p><strong> Subtitulo:</strong> {{post.subtitulo}}</p>
+                <p><a class="navbar-brand" href="editar_blog_usuario_texto/{{post.id}}">Editar texto del blog</a></p>
+                <p><a class="navbar-brand" href="editar_blog_usuario_imagen/{{post.id}}">Editar imagen del blog</a></p>
+                <p><a class="navbar-brand" href="borrar_blog/{{post.id}}">Borrar blog</a></p>
+                <p>----------------------------</p>
+               <p></p>
+               <p></p>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

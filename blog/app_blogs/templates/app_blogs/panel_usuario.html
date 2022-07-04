@@ -1,0 +1,26 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <img height="40px" src="{{avatar_usuario}}">
+                <p></p>
+                <h1>Hola {{user.get_username}}</h1>
+                <a class="btn btn-primary" href="{% url 'Editar Avatar' %}">Editar Avatar</a>
+                <a class="btn btn-primary" href="{% url 'Borrar Avatar' %}">Borrar Avatar</a>
+                <a class="btn btn-primary" href="{% url 'Editar Email' %}">Editar Email</a>
+                <a class="btn btn-primary" href="{% url 'Cambiar Pass' %}">Cambiar Contraseña</a>
+                <a class="btn btn-primary" href="{% url 'Administrar Blogs' %}">Administrar Blogs</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% endblock %}

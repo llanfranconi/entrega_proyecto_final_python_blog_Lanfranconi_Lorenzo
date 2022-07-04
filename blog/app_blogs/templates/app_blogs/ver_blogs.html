@@ -1,0 +1,51 @@
+{% extends "app_blogs/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                {% if request.user.is_authenticated %}
+                <p></p>
+                <h1>Hola {{user.get_username}}, esta es la lista de blogs</h1>
+                {% endif %} 
+                {% if not request.user.is_authenticated %}
+                <h1>Bienvenido a la lista de blogs!</h1>
+                <h1>Registrate para crear el tuyo!</h1>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</header>
+<p></p>
+<p></p>
+<p></p>
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+        <h2>{{mensaje}}</h2>
+        {% for post in blogs %} 
+               <h2>Titulo: {{post.titulo}}</h2> 
+               <p><strong> Subtitulo:</strong> {{post.subtitulo}}</p>
+               {% for usuario in usuarios %}
+                    {% if usuario.id == post.user_id %} 
+                    <p><strong>Autor:</strong> {{usuario.username}}</p>
+                    {% endif %} 
+                {% endfor %}
+                <p><a class="navbar-brand" href="ver_blogs/{{post.id}}">Ver Más</a></p>
+                <p></p>
+                <p></p>
+                <p>----------------------------</p>
+               <p></p>
+               <p></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
